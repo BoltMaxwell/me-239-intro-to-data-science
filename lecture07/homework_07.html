@@ -1,0 +1,2260 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Homework 7 &#8212; Introduction to Data Science for Mechanical Engineers (Lecture Book)</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'lecture07/homework_07';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Lecture 8: The basic rules of probability" href="../lecture08/intro.html" />
+    <link rel="prev" title="Estimating probabilities from data - Bootstrapping" href="estimating-probabilities-from-data.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Introduction to Data Science for Mechanical Engineers (Lecture Book)</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    Preface
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lecture01/intro.html">Lecture 1: Introduction</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../lecture01/what-is-data-science.html">What is data science?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture01/cool-applications.html">Some cool appliations of data science in mechanical engineering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture01/python-intro.html">Why Python?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture01/python-expressions.html">Python expressions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture01/python-variables-and-types.html">Python variables and types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture01/homework_01.html">Homework 1</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lecture02/intro.html">Lecture 2: Data arrays</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../lecture02/python-tuples.html">Python tuples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture02/python-lists.html">Python lists</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture02/python-numpy.html">Numerical Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture02/homework_02.html">Homework 2</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lecture03/intro.html">Lecture 3: Data loading and selection</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../lecture03/python-matrices.html">Matrices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture03/python-csv-files.html">Comma-separated values file format</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture03/python-pandas.html">The Python Data Analysis Library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture03/homework_03.html">Homework 3</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lecture04/intro.html">Lecture 4: Data visualization</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../lecture04/python-plotting.html">Plotting simple functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture04/python-plot-noisy.html">Plotting noisy measurements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture04/python-scatter.html">Scatter plots</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture04/python-histograms.html">Histograms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture04/homework_04.html">Homework 4</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lecture05/intro.html">Lecture 5: Functions, data manipulation, and models</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../lecture05/python-strings.html">Basics of strings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture05/python-print.html">The print function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture05/python-functions.html">Python functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture05/applying-functions-to-dataframes.html">Applying functions to dataframes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture05/models-are-functions.html">Models are functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture05/homework_05.html">Homework 5</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lecture06/intro.html">Lecture 6: Conditionals and loops</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../lecture06/python-conditionals.html">Python conditionals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture06/python-loops.html">Python loops</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture06/python-pandas-selections.html">Selecting dataframe rows that satisfy a boolean expression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture06/homework_06.html">Homework 6</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="intro.html">Lecture 7: Probability as a measure of uncertainty</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="probability-and-state-of-knowledge.html">Probability as a representation of our state of knowledge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="probability-common-sense.html">The common sense assumptions that give rise to the basic probability rules.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="principle-of-insufficient-reason.html">The principle of insufficient reason</a></li>
+<li class="toctree-l2"><a class="reference internal" href="estimating-probabilities-by-simulation.html">Estimating probabilities by simulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="estimating-probabilities-from-data.html">Estimating probabilities from data - Bootstrapping</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Homework 7</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lecture08/intro.html">Lecture 8: The basic rules of probability</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../lecture08/probability-rules.html">The basic rules of probability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture08/probability-urn-example.html">Example - Drawing balls from a box without replacement</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture08/probability-of-disjunction.html">Probability of logical disjunctions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture08/probability-sum-rule.html">The sum rule</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture08/probability-urn-example-sum-rule.html">Example - Drawing balls from a box without replacement (sum rule)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture08/probability-urn-example-information-flow.html">Example - Drawing balls from a box without replacement (information flow)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture08/homework_08.html">Homework 8</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lecture09/intro.html">Lecture 9: Discrete random variables</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../lecture09/discrete-random-variables.html">Discrete Random variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture09/probability-mass-function.html">The probability mass function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture09/the-bernoulli-distribution.html">The Bernoulli distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture09/properties-of-the-probability-mass-function.html">Properties of the probability mass function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture09/the-categorical-distribution.html">The Categorical distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture09/the-binomial-distribution.html">The Binomial Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture09/the-poisson-distribution.html">The Poisson distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture09/homework_09.html">Homework 9</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lecture10/intro.html">Lecture 10: Continuous random variables</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../lecture10/continuous-random-variables.html">Continuous random variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture10/example-manufacturing-steel-balls.html">Example: Uncertainties in steel ball manufacturing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture10/cumulative-distribution-function.html">The cumulative distribution function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture10/probability-density-function.html">The probability density function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture10/the-uniform-distribution.html">The uniform distribution</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../lecture10/homework_10.html">Homework 10</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lecture11/intro.html">Lecture 11: Expectations, variances, and their properties</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../lecture11/expectation-discrete-rv.html">Expectation of discrete random variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture11/examples-expectation-of-discrete-rvs.html">Examples of expectations of discrete random variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture11/expectation-continuous-rv.html">Expectation of a continuous random variable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture11/expectation-notation.html">Simplifying our notation about expectations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture11/properties-of-expectations.html">Properties of expectations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture11/variance.html">Variance of a random variable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture11/properties-of-variance.html">Properties of variance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture11/examples-variance.html">Examples of variances of random variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture11/homework_11.html">Homework 11</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lecture12/intro.html">Lecture 12: The Normal distribution, quantiles, and credible intervals</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../lecture12/the-standard-normal.html">The standard Normal distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture12/standard-normal-quantiles.html">Quantiles of the standard Normal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture12/the-normal.html">The Normal distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture12/normal-quantiles.html">Quantiles of the Normal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture12/example-fitting-normals.html">Fitting Normal distributions to data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture12/homework_12.html">Homework 12</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lecture13/intro.html">Lecture 13: Fitting models with the principle of maximum likelihood</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../lecture13/joint-probability-density-function.html">The joint probability density function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture13/repeated-experiments.html">Repeated independent experiments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture13/the-maximum-likelihood-principle.html">The maximum likelihood principle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture13/fitting-the-normal-with-maximum-likelihood.html">Fitting the parameters of a Normal using the maximum likelihood principle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture13/fitting-the-bernoulli.html">Fitting the Bernoulli with maximum likelihood</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture13/predictive-checking.html">Predictive checking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture13/homework_13.html">Homework 13</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lecture14/intro.html">Lecture 14: Covariance, correlation, and linear regression with one variable</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../lecture14/covariance.html">Covariance between two random variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture14/correlation.html">Correlation between two random variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture14/correlation-is-not-causation.html">Correlation is not causation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture14/uncorrelated-does-not-imply-independent.html">Two uncorrelated random variables are not necessarily independent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture14/linear-regression-with-one-variable.html">Linear regression with one variable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture14/homework_14.html">Homework 14</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lecture15/intro.html">Lecture 15: Linear regression</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../lecture15/regression-with-one-variable-revisited.html">Regression with one variable revisited</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture15/example-linear-regression.html">Example: Linear regression with a single variable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture15/polynomial-regression.html">Polynomial Regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture15/the-generalized-linear-model.html">The generalized linear model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture15/regression-diagnostics.html">Measures of Predictive Accuracy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture15/cross-validation.html">Cross validation for selecting the number of basis functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture15/maximum-likelihood-interpretation.html">Maximum likelihood interpretation of least squares</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture15/maximum-likelihood-example.html">Example: Regression with estimated measurement noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture15/homework_15.html">Homework 15</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lecture16/intro.html">Lecture 16: Classification via logistic regression</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../lecture16/logistic-regression.html">Logistic regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture16/example-logistic-regression-one-variable.html">Example: Logistic regression with one variable (High melting explosives)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture16/example-logistic-regression-many-features.html">Logistic regression with many features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture16/classification-diagnostics.html">Diagnostics for Classification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lecture16/homework_16.html">Homework 16</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../bibliography.html">Bibliography</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/PurdueMechanicalEngineering/me-239-intro-to-data-science/master?urlpath=lab/tree/lecture07/homework_07.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Binder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Binder logo" src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/PurdueMechanicalEngineering/me-239-intro-to-data-science/blob/master/lecture07/homework_07.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/lecture07/homework_07.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Homework 7</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#student-details">Student details</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-1-blackjack-probabilities">Problem 1 - Blackjack probabilities</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-finding-the-probability-of-a-using-the-principle-of-inssuficient-reason">2.A - Finding the probability of <span class="math notranslate nohighlight">\(A\)</span> using the principle of inssuficient reason</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-estimating-the-probability-of-a-by-simulation">2.B - Estimating the probability of A by simulation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-2-predicting-the-probability-of-major-earthquakes-in-southern-california">Problem 2 - Predicting the probability of major earthquakes in Southern California</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="homework-7">
+<span id="lecture07-homework"></span><h1>Homework 7<a class="headerlink" href="#homework-7" title="Link to this heading">#</a></h1>
+<ul class="simple">
+<li><p>Type your name and email in the “Student details” section below.</p></li>
+<li><p>Develop the code and generate the figures you need to solve the problems using this notebook.</p></li>
+<li><p>For the answers that require a mathematical proof or derivation you can either:</p>
+<ul>
+<li><p>Type the answer using the built-in latex capabilities. In this case, simply export the notebook as a pdf and upload it on gradescope; or</p></li>
+<li><p>You can print the notebook (after you are done with all the code), write your answers by hand, scan, turn your response to a single pdf, and upload on gradescope.</p></li>
+</ul>
+</li>
+<li><p>The total homework points are 100. Please note that the problems are not weighed equally.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>Please match all the pages corresponding to each of the questions when you submit on gradescope.</p></li>
+</ul>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Here are some modules that you may need - please run this block of code:</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set_context</span><span class="p">(</span><span class="s1">&#39;paper&#39;</span><span class="p">)</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">scipy</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">scipy.stats</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">st</span>
+<span class="c1"># A helper function for downloading files</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">download</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">local_filename</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Downloads the file in the ``url`` and saves it in the current working directory.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">local_filename</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">local_filename</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">local_filename</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fd</span><span class="p">:</span>
+        <span class="n">fd</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<section id="student-details">
+<h2>Student details<a class="headerlink" href="#student-details" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>First Name:</strong></p></li>
+<li><p><strong>Last Name:</strong></p></li>
+<li><p><strong>Email:</strong></p></li>
+</ul>
+</section>
+<section id="problem-1-blackjack-probabilities">
+<h2>Problem 1 - Blackjack probabilities<a class="headerlink" href="#problem-1-blackjack-probabilities" title="Link to this heading">#</a></h2>
+<p>Blackjack is a popular card game.
+The background information <span class="math notranslate nohighlight">\(I\)</span> captures the basic rules of the game relevant to this problem:</p>
+<blockquote>
+<div><p>We have a deck of 52 cards.
+The deck includes: Four versions aces (A); Four versions of each number from 2 to 10; Four versions of the figures J, Q, and K.
+In blackjack all the cards are associated with a number.
+The cards that have a number on them are associated with that number.
+The figures J, Q, and K are associated with the number 10.
+The aces A can either be the number 1 or the number 11.
+The deck of cards is shuffled <a class="reference external" href="https://youtu.be/AxJubaijQbI">adequately</a>.</p>
+</div></blockquote>
+<p>Now consider the logical proposition <span class="math notranslate nohighlight">\(A\)</span> (blackjack):</p>
+<blockquote>
+<div><p>You draw two cards at random from the deck without replacement.
+You either have two aces (AA) or the maximum sum of the numbers associated with the cards is 21.
+For example: (10, A), (J, A), etc.</p>
+</div></blockquote>
+<section id="a-finding-the-probability-of-a-using-the-principle-of-inssuficient-reason">
+<h3>2.A - Finding the probability of <span class="math notranslate nohighlight">\(A\)</span> using the principle of inssuficient reason<a class="headerlink" href="#a-finding-the-probability-of-a-using-the-principle-of-inssuficient-reason" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Find the number of ways in which you can choose two unique cards from the deck.
+Hint: Google “N choose k”.</p></li>
+</ul>
+<p><strong>Answer:</strong></p>
+<p><em>Your answer here.</em></p>
+<ul class="simple">
+<li><p>Find the number ways in which you can get two cards that sum to 21. Hint: Enumerate all possibilities.</p></li>
+</ul>
+<p><strong>Answer:</strong></p>
+<p><em>Your answer here.</em></p>
+<ul class="simple">
+<li><p>Find the probability that you pick two cards that sum to 21, i.e., find <span class="math notranslate nohighlight">\(p(A|I)\)</span>. Hint: Use the principle of insufficient reason.</p></li>
+</ul>
+<p><strong>Answer:</strong></p>
+<p><em>Your answer here.</em></p>
+</section>
+<section id="b-estimating-the-probability-of-a-by-simulation">
+<h3>2.B - Estimating the probability of A by simulation<a class="headerlink" href="#b-estimating-the-probability-of-a-by-simulation" title="Link to this heading">#</a></h3>
+<p>In this problem, we are going to use Monte Carlo simulations to estimate the probability of picking two cards that sum to 21, i.e., <span class="math notranslate nohighlight">\(p(A|I)\)</span>.
+Basically, we are going to simulate the process of picking these two cards.
+First, let’s start by making all the different cards that appear in a deck of 52.
+In what follows, I use the following conventions:</p>
+<ul class="simple">
+<li><p>‘d’ stands for ‘diamonds’.</p></li>
+<li><p>‘h’ stands for ‘hearts’.</p></li>
+<li><p>‘s’ stands for ‘spades’.</p></li>
+<li><p>‘c’ stands for ‘clubs’.
+Numbers stand for themselves. And finally:</p></li>
+<li><p>‘A’ for ‘ace’.</p></li>
+<li><p>‘J’ for ‘jack’.</p></li>
+<li><p>‘Q’ for ‘queen’.</p></li>
+<li><p>‘K’ for ‘king’.
+For example, this is if you see the string ‘2h’ then this is the ‘two of hearts’.
+If you see ‘Ad’ this is the ‘Ace of diamonds’. And so on.
+Let’s make a deck of cards:</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">deck</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;2&#39;</span><span class="p">,</span> <span class="s1">&#39;3&#39;</span><span class="p">,</span> <span class="s1">&#39;4&#39;</span><span class="p">,</span> <span class="s1">&#39;5&#39;</span><span class="p">,</span> <span class="s1">&#39;6&#39;</span><span class="p">,</span> <span class="s1">&#39;7&#39;</span><span class="p">,</span> <span class="s1">&#39;8&#39;</span><span class="p">,</span> <span class="s1">&#39;9&#39;</span><span class="p">,</span> <span class="s1">&#39;10&#39;</span><span class="p">,</span> <span class="s1">&#39;J&#39;</span><span class="p">,</span> <span class="s1">&#39;Q&#39;</span><span class="p">,</span> <span class="s1">&#39;K&#39;</span><span class="p">]:</span>
+    <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="s1">&#39;h&#39;</span><span class="p">,</span> <span class="s1">&#39;s&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">]:</span>
+        <span class="n">card</span> <span class="o">=</span> <span class="n">n</span> <span class="o">+</span> <span class="n">c</span>
+        <span class="n">deck</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">card</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">deck</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can use <a class="reference external" href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.shuffle.html">numpy.random.shuffle</a> to shuffle the deck in place.
+Here is how:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">deck</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">deck</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Once the deck is shuffled, you can pick two cards at random by just picking the first two cards of the deck:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">my_cards</span> <span class="o">=</span> <span class="n">deck</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">my_cards</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now, let’s write a function that calculates the sum of the cards.
+I wrote the function so that it only works with two cards.
+It will always use 11 for aces.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">count_cards</span><span class="p">(</span><span class="n">cards</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Counts cards according to blackjack conventions.</span>
+<span class="sd">    </span>
+<span class="sd">    Arguments:</span>
+<span class="sd">    cards   -   Two cards. They much be a string from a deck.</span>
+<span class="sd">    </span>
+<span class="sd">    Returns: The blackjack value of the cards.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">cards</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;This only works for two cards.&#39;</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">cards</span><span class="p">:</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="n">c</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="s1">&#39;A&#39;</span><span class="p">:</span>
+            <span class="n">s</span> <span class="o">+=</span> <span class="mi">11</span>
+        <span class="k">elif</span> <span class="n">n</span> <span class="o">==</span> <span class="s1">&#39;J&#39;</span> <span class="ow">or</span> <span class="n">n</span> <span class="o">==</span> <span class="s1">&#39;Q&#39;</span> <span class="ow">or</span> <span class="n">n</span> <span class="o">==</span> <span class="s1">&#39;K&#39;</span><span class="p">:</span>
+            <span class="n">s</span> <span class="o">+=</span> <span class="mi">10</span>
+        <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span> <span class="c1"># this is the case of &#39;10d&#39;, &#39;10h&#39;, etc.</span>
+            <span class="n">s</span> <span class="o">+=</span> <span class="mi">10</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">s</span> <span class="o">+=</span> <span class="nb">int</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">s</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s test it a few times:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">my_cards</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">count_cards</span><span class="p">(</span><span class="n">my_cards</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Do it ten times at random:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">deck</span><span class="p">)</span>
+    <span class="n">my_cards</span> <span class="o">=</span> <span class="n">deck</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span>
+    <span class="n">sum_of_cards</span> <span class="o">=</span> <span class="n">count_cards</span><span class="p">(</span><span class="n">my_cards</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">my_cards</span><span class="p">,</span> <span class="s1">&#39; sum to: &#39;</span><span class="p">,</span> <span class="n">sum_of_cards</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Now, we have everything we need. Complete the following code which use the Monte Carlo method to estimate the probability of randomly picking two cards that sum to 21.
+Feel free to experiment with the number of simulations so that you get an accurate estimate.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># The number of experiments you want to simulate</span>
+<span class="n">num_exp</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="c1"># This is a list in which we are going to put the result</span>
+<span class="c1"># of each &quot;experiment&quot;. We will record a 1 (one) if the experiment</span>
+<span class="c1"># is successful (cards sum to 21) and a 0 (zero) otherwise</span>
+<span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="c1"># Loop over experiments</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_exp</span><span class="p">):</span>
+    <span class="c1"># YOUR CODE HERE (shuffle the deck)</span>
+    <span class="n">my_cards</span> <span class="o">=</span> <span class="c1"># YOUR CODE HERE (pick the first two cards from the deck)</span>
+    <span class="n">sum_of_cards</span> <span class="o">=</span> <span class="c1"># YOUR CODE HERE (find the sum of the cards)</span>
+    <span class="c1"># YOUR CODE HERE (write a conditional statement that appends 1</span>
+    <span class="c1">#                 to result if the sum of cards is 21 and 0 otherwise)</span>
+<span class="n">p_A_g_I</span> <span class="o">=</span> <span class="c1"># YOUR CODE HERE (use result to estimate the probability of getting two</span>
+        <span class="c1">#                 cards that sum to 21)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;p(A|I) ~= </span><span class="si">{</span><span class="n">p_A_g_I</span><span class="si">:</span><span class="s1">1.5f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Plot the estimate of <span class="math notranslate nohighlight">\(p(A|I)\)</span> as a function of the number of experiments. In the same plot, use a red dashed line to mark the true value of <span class="math notranslate nohighlight">\(p(A|I)\)</span> based on your answer to the very first question. Hint: See the discussion at the very end of <a class="reference internal" href="estimating-probabilities-by-simulation.html#lecture07-estimating-probabilities-simulation"><span class="std std-ref">Estimating probabilities by simulation</span></a>.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="problem-2-predicting-the-probability-of-major-earthquakes-in-southern-california">
+<span id="lecture07-homework-problem2"></span><h2>Problem 2 - Predicting the probability of major earthquakes in Southern California<a class="headerlink" href="#problem-2-predicting-the-probability-of-major-earthquakes-in-southern-california" title="Link to this heading">#</a></h2>
+<p>We will use the <a class="reference external" href="https://scedc.caltech.edu/data/cloud.html#eq-catalog">Southern California Earthquake Data Center catalog</a> in this problem.
+The catalog contains all earthquakes recorded from 1932 until now in Southern California.
+Do not worry about how I get the data. Just run the code and it will produce a nice dataframe that you can play with.
+Our goal is to estimate the probability of a major earthquake (to be defined below) somewhere in Southern California during a given year.</p>
+<p>First, let’s download the data and put them in a dataframe.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1932</span><span class="p">,</span> <span class="mi">2021</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Downloading year&#39;</span><span class="p">,</span> <span class="n">year</span><span class="p">)</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;https://raw.githubusercontent.com/SCEDC/SCEDC-catalogs/master/SCEC_DC/</span><span class="si">{</span><span class="n">year</span><span class="si">}</span><span class="s1">.catalog&#39;</span>
+    <span class="o">!</span>curl<span class="w"> </span>-O<span class="w"> </span><span class="nv">$url</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading year 1932
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 35589  100 35589    0     0   110k      0 --:--:-- --:--:-- --:--:--  110k
+Downloading year 1933
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 86430  100 86430    0     0   302k      0 --:--:-- --:--:-- --:--:--  301k
+Downloading year 1934
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 49201  100 49201    0     0   204k      0 --:--:-- --:--:-- --:--:--  204k
+Downloading year 1935
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 47807  100 47807    0     0   218k      0 --:--:-- --:--:-- --:--:--  218k
+Downloading year 1936
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 43461  100 43461    0     0  81961      0 --:--:-- --:--:-- --:--:-- 82001
+Downloading year 1937
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 30587  100 30587    0     0   117k      0 --:--:-- --:--:-- --:--:--     0-:--:-- --:--:-- --:--:--  117k
+Downloading year 1938
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 24519  100 24519    0     0  88426      0 --:--:-- --:--:-- --:--:-- 88197
+Downloading year 1939
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 23863  100 23863    0     0   105k      0 --:--:-- --:--:-- --:--:--  105k
+Downloading year 1940
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 25831  100 25831    0     0   119k      0 --:--:-- --:--:-- --:--:--  120k
+Downloading year 1941
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 21157  100 21157    0     0   100k      0 --:--:-- --:--:-- --:--:--  100k
+Downloading year 1942
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 23453  100 23453    0     0   124k      0 --:--:-- --:--:-- --:--:--  124k
+Downloading year 1943
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 20747  100 20747    0     0   113k      0 --:--:-- --:--:-- --:--:--  114k
+Downloading year 1944
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 19025  100 19025    0     0  99908      0 --:--:-- --:--:-- --:--:--   97k
+Downloading year 1945
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 15253  100 15253    0     0  84710      0 --:--:-- --:--:-- --:--:-- 84738
+Downloading year 1946
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 34523  100 34523    0     0   155k      0 --:--:-- --:--:-- --:--:--  156k
+Downloading year 1947
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 50513  100 50513    0     0   227k      0 --:--:-- --:--:-- --:--:--  228k
+Downloading year 1948
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 41001  100 41001    0     0   161k      0 --:--:-- --:--:-- --:--:--  161k
+Downloading year 1949
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 40673  100 40673    0     0   210k      0 --:--:-- --:--:-- --:--:--  211k
+Downloading year 1950
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 42477  100 42477    0     0   161k      0 --:--:-- --:--:-- --:--:--     0 --:--:--  162k
+Downloading year 1951
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 21239  100 21239    0     0   119k      0 --:--:-- --:--:-- --:--:--  119k
+Downloading year 1952
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 46331  100 46331    0     0   189k      0 --:--:-- --:--:-- --:--:--  190k
+Downloading year 1953
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 47643  100 47643    0     0   227k      0 --:--:-- --:--:-- --:--:--  228k
+Downloading year 1954
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 45265  100 45265    0     0   208k      0 --:--:-- --:--:-- --:--:--  209k
+Downloading year 1955
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 29685  100 29685    0     0   123k      0 --:--:-- --:--:-- --:--:--  123k
+Downloading year 1956
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 23699  100 23699    0     0   116k      0 --:--:-- --:--:-- --:--:--     0-- --:--:--  116k
+Downloading year 1957
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 21731  100 21731    0     0   117k      0 --:--:-- --:--:-- --:--:--  117k
+Downloading year 1958
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 19517  100 19517    0     0   106k      0 --:--:-- --:--:-- --:--:--  107k
+Downloading year 1959
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 22879  100 22879    0     0   100k      0 --:--:-- --:--:-- --:--:--  100k
+Downloading year 1960
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 15909  100 15909    0     0  84036      0 --:--:-- --:--:-- --:--:-- 84174
+Downloading year 1961
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 24929  100 24929    0     0   113k      0 --:--:-- --:--:-- --:--:--  113k
+Downloading year 1962
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 22059  100 22059    0     0   104k      0 --:--:-- --:--:-- --:--:--  104k
+Downloading year 1963
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 25011  100 25011    0     0   108k      0 --:--:-- --:--:-- --:--:--  108k
+Downloading year 1964
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 16975  100 16975    0     0  71557      0 --:--:-- --:--:-- --:--:-- 71624
+Downloading year 1965
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 23781  100 23781    0     0   119k      0 --:--:-- --:--:-- --:--:--  119k
+Downloading year 1966
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 27225  100 27225    0     0   124k      0 --:--:-- --:--:-- --:--:--  124k
+Downloading year 1967
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 29439  100 29439    0     0   159k      0 --:--:-- --:--:-- --:--:--  159k
+Downloading year 1968
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 45921  100 45921    0     0   227k      0 --:--:-- --:--:-- --:--:--  227k
+Downloading year 1969
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 50923  100 50923    0     0   201k      0 --:--:-- --:--:-- --:--:--  201k
+Downloading year 1970
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 41985  100 41985    0     0   187k      0 --:--:-- --:--:-- --:--:--  188k
+Downloading year 1971
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 68635  100 68635    0     0   271k      0 --:--:-- --:--:-- --:--:--  270k
+Downloading year 1972
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 58959  100 58959    0     0   243k      0 --:--:-- --:--:-- --:--:--  243k
+Downloading year 1973
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  108k  100  108k    0     0   288k      0 --:--:-- --:--:-- --:--:--  288k
+Downloading year 1974
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 95450  100 95450    0     0   362k      0 --:--:-- --:--:-- --:--:--  364k
+Downloading year 1975
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  226k  100  226k    0     0   793k      0 --:--:-- --:--:-- --:--:--  794k
+Downloading year 1976
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  332k  100  332k    0     0  1239k      0 --:--:-- --:--:-- --:--:-- 1239k
+Downloading year 1977
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  414k  100  414k    0     0   685k      0 --:--:-- --:--:-- --:--:--  686k
+Downloading year 1978
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  501k  100  501k    0     0  1161k      0 --:--:-- --:--:-- --:--:-- 1162k
+Downloading year 1979
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  798k  100  798k    0     0  2216k      0 --:--:-- --:--:-- --:--:-- 2212k
+Downloading year 1980
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  449k  100  449k    0     0   989k      0 --:--:-- --:--:-- --:--:--  991k
+Downloading year 1981
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  856k  100  856k    0     0  1864k      0 --:--:-- --:--:-- --:--:-- 1865k
+Downloading year 1982
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 1124k  100 1124k    0     0  2538k      0 --:--:-- --:--:-- --:--:-- 2537k
+Downloading year 1983
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 1159k  100 1159k    0     0  3012k      0 --:--:-- --:--:-- --:--:-- 3018k
+Downloading year 1984
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 1433k  100 1433k    0     0  2432k      0 --:--:-- --:--:-- --:--:-- 2433k
+Downloading year 1985
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 1510k  100 1510k    0     0  3037k      0 --:--:-- --:--:-- --:--:-- 3038k
+Downloading year 1986
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 1367k  100 1367k    0     0  2533k      0 --:--:-- --:--:-- --:--:-- 2533k
+Downloading year 1987
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 1087k  100 1087k    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0  2322k      0 --:--:-- --:--:-- --:--:-- 2319k
+Downloading year 1988
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  887k  100  887k    0     0  1470k      0 --:--:-- --:--:-- --:--:-- 1468k
+Downloading year 1989
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  927k  100  927k    0     0  1945k      0 --:--:-- --:--:-- --:--:--     0:-- --:--:-- 1947k
+Downloading year 1990
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  900k  100  900k    0     0  2296k      0 --:--:-- --:--:-- --:--:-- 2297k
+Downloading year 1991
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  808k  100  808k    0     0  2058k      0 --:--:-- --:--:-- --:--:-- 2058k
+Downloading year 1992
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 4119k  100 4119k    0     0  6953k      0 --:--:-- --:--:-- --:--:-- 6958k
+Downloading year 1993
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 1763k  100 1763k    0     0  3209k      0 --:--:-- --:--:-- --:--:-- 3212k
+Downloading year 1994
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 2263k  100 2263k    0     0  4348k      0 --:--:-- --:--:-- --:--:-- 4352k
+Downloading year 1995
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 2001k  100 2001k    0     0  4343k      0 --:--:-- --:--:-- --:--:-- 4342k
+Downloading year 1996
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 1592k  100 1592k    0     0  3034k      0 --:00:13 --:--:--  0:00:13  115k--:-- --:--:-- --:--:-- 3032k
+Downloading year 1997
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 1227k  100 1227k    0     0  2901k      0 --:--:-- --:--:-- --:--:--     0-- 2902k
+Downloading year 1998
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 1086k  100 1086k    0     0  2833k      0 --:--:-- --:--:-- --:--:-- 2836k
+Downloading year 1999
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 1712k  100 1712k    0     0  3403k      0 --:--:-- --:--:-- --:--:-- 3398k
+Downloading year 2000
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 1632k  100 1632k    0     0  3418k      0 --:--:-- --:--:-- --:--:-- 3422k
+Downloading year 2001
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 1451k  100 1451k    0     0  2864k      0 --:--:-- --:--:-- --:--:-- 2868k
+Downloading year 2002
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  950k  100  950k    0     0  2384k      0 --:--:-- --:--:-- --:--:-- 2387k
+Downloading year 2003
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  925k  100  925k    0     0  2382k      0 --:--:-- --:--:-- --:--:-- 2378k
+Downloading year 2004
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  982k  100  982k    0     0  1357k      0 --:--:-- --:--:-- --:--:-- 1356k
+Downloading year 2005
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 1058k  100 1058k    0     0  3181k      0 --:--:-- --:--:-- --:--:-- 3187k
+Downloading year 2006
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  897k  100  897k    0     0  1992k      0 --:--:-- --:--:-- --:--:-- 1989k
+Downloading year 2007
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  920k  100  920k    0     0  2599k      0 --:--:-- --:--:-- --:--:-- 2600k
+Downloading year 2008
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 1126k  100 1126k    0     0  3016k      0 --:--:-- --:--:-- --:--:-- 3020k
+Downloading year 2009
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 1340k  100 1340k    0     0  3120k      0 --:--:-- --:--:-- --:--:-- 3117k
+Downloading year 2010
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 3360k  100 3360k    0     0  7114k      0 --:--:-- --:--:-- --:--:-- 7105k
+Downloading year 2011
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 1247k  100 1247k    0     0  2399k      0 --:--:-- --:--:-- --:--:-- 2403k
+Downloading year 2012
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 1375k  100 1375k    0     0  2957k      0 --:--:-- --:--:-- --:--:-- 2963k
+Downloading year 2013
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 1485k  100 1485k    0     0  3782k      0 --:--:-- --:--:-- --:--:-- 3780k
+Downloading year 2014
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 1156k  100 1156k    0     0  2999k      0 --:--:-- --:--:-- --:--:-- 3003k
+Downloading year 2015
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 1248k  100 1248k    0     0  3247k      0 --:--:-- --:--:-- --:--:-- 3252k
+Downloading year 2016
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 1284k  100 1284k    0     0  2155k      0 --:--:-- --:--:-- --:--:-- 2154k
+Downloading year 2017
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 1309k  100 1309k    0     0  1359k      0 --:--:-- --:--:-- --:--:-- 1358k
+Downloading year 2018
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 1660k  100 1660k    0     0  2850k      0 --:--:-- --:--:-- --:--:-- 2853k
+Downloading year 2019
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 5106k  100 5106k    0     0  7809k      0 --:--:-- --:--:-- --:--:-- 7808k
+Downloading year 2020
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 2986k  100 2986k    0     0  5123k      0 --:--:-- --:--:-- --:--:-2 94408- 5122k
+</pre></div>
+</div>
+</div>
+</div>
+<p>Each one of these is a csv file.
+We will put them all in the same daframe for your convenience:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="n">list_of_dfs</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1932</span><span class="p">,</span> <span class="mi">2021</span><span class="p">):</span>
+    <span class="n">filename</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{0:d}</span><span class="s1">.catalog&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">year</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Reading: &#39;</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
+    <span class="n">df_year</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;\s+&#39;</span><span class="p">,</span> <span class="n">comment</span><span class="o">=</span><span class="s1">&#39;#&#39;</span><span class="p">,</span>
+                      <span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Date&#39;</span><span class="p">,</span> <span class="s1">&#39;Hour&#39;</span><span class="p">,</span> <span class="s1">&#39;ET&#39;</span><span class="p">,</span> <span class="s1">&#39;GT&#39;</span><span class="p">,</span> <span class="s1">&#39;MAG&#39;</span><span class="p">,</span> <span class="s1">&#39;M&#39;</span><span class="p">,</span> <span class="s1">&#39;LAT&#39;</span><span class="p">,</span> <span class="s1">&#39;LON&#39;</span><span class="p">,</span>
+                               <span class="s1">&#39;DEPTH&#39;</span><span class="p">,</span> <span class="s1">&#39;Q&#39;</span><span class="p">,</span> <span class="s1">&#39;EVID&#39;</span><span class="p">,</span> <span class="s1">&#39;NPH&#39;</span><span class="p">,</span> <span class="s1">&#39;NGRM&#39;</span><span class="p">])</span>
+    <span class="n">df_year</span><span class="o">.</span><span class="n">Date</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df_year</span><span class="p">[</span><span class="s1">&#39;Date&#39;</span><span class="p">],</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;%Y/%m/</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">list_of_dfs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">df_year</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">list_of_dfs</span><span class="p">,</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DatetimeIndex</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Date&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">year</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Reading:  1932.catalog
+Reading:  1933.catalog
+Reading:  1934.catalog
+Reading:  1935.catalog
+Reading:  1936.catalog
+Reading:  1937.catalog
+Reading:  1938.catalog
+Reading:  1939.catalog
+Reading:  1940.catalog
+Reading:  1941.catalog
+Reading:  1942.catalog
+Reading:  1943.catalog
+Reading:  1944.catalog
+Reading:  1945.catalog
+Reading:  1946.catalog
+Reading:  1947.catalog
+Reading:  1948.catalog
+Reading:  1949.catalog
+Reading:  1950.catalog
+Reading:  1951.catalog
+Reading:  1952.catalog
+Reading:  1953.catalog
+Reading:  1954.catalog
+Reading:  1955.catalog
+Reading:  1956.catalog
+Reading:  1957.catalog
+Reading:  1958.catalog
+Reading:  1959.catalog
+Reading:  1960.catalog
+Reading:  1961.catalog
+Reading:  1962.catalog
+Reading:  1963.catalog
+Reading:  1964.catalog
+Reading:  1965.catalog
+Reading:  1966.catalog
+Reading:  1967.catalog
+Reading:  1968.catalog
+Reading:  1969.catalog
+Reading:  1970.catalog
+Reading:  1971.catalog
+Reading:  1972.catalog
+Reading:  1973.catalog
+Reading:  1974.catalog
+Reading:  1975.catalog
+Reading:  1976.catalog
+Reading:  1977.catalog
+Reading:  1978.catalog
+Reading:  1979.catalog
+Reading:  1980.catalog
+Reading:  1981.catalog
+Reading:  1982.catalog
+Reading:  1983.catalog
+Reading:  1984.catalog
+Reading:  1985.catalog
+Reading:  1986.catalog
+Reading:  1987.catalog
+Reading:  1988.catalog
+Reading:  1989.catalog
+Reading:  1990.catalog
+Reading:  1991.catalog
+Reading:  1992.catalog
+Reading:  1993.catalog
+Reading:  1994.catalog
+Reading:  1995.catalog
+Reading:  1996.catalog
+Reading:  1997.catalog
+Reading:  1998.catalog
+Reading:  1999.catalog
+Reading:  2000.catalog
+Reading:  2001.catalog
+Reading:  2002.catalog
+Reading:  2003.catalog
+Reading:  2004.catalog
+Reading:  2005.catalog
+Reading:  2006.catalog
+Reading:  2007.catalog
+Reading:  2008.catalog
+Reading:  2009.catalog
+Reading:  2010.catalog
+Reading:  2011.catalog
+Reading:  2012.catalog
+Reading:  2013.catalog
+Reading:  2014.catalog
+Reading:  2015.catalog
+Reading:  2016.catalog
+Reading:  2017.catalog
+Reading:  2018.catalog
+Reading:  2019.catalog
+Reading:  2020.catalog
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Date</th>
+      <th>Hour</th>
+      <th>ET</th>
+      <th>GT</th>
+      <th>MAG</th>
+      <th>M</th>
+      <th>LAT</th>
+      <th>LON</th>
+      <th>DEPTH</th>
+      <th>Q</th>
+      <th>EVID</th>
+      <th>NPH</th>
+      <th>NGRM</th>
+      <th>Year</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1932-01-01</td>
+      <td>23:52:07.87</td>
+      <td>eq</td>
+      <td>l</td>
+      <td>0.00</td>
+      <td>n</td>
+      <td>34.13</td>
+      <td>-117.99</td>
+      <td>6.0</td>
+      <td>D</td>
+      <td>3358386</td>
+      <td>7</td>
+      <td>0</td>
+      <td>1932</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1932-01-02</td>
+      <td>16:42:43.68</td>
+      <td>eq</td>
+      <td>l</td>
+      <td>2.73</td>
+      <td>l</td>
+      <td>33.90</td>
+      <td>-117.64</td>
+      <td>6.0</td>
+      <td>C</td>
+      <td>3358387</td>
+      <td>12</td>
+      <td>0</td>
+      <td>1932</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1932-01-03</td>
+      <td>17:58:10.01</td>
+      <td>eq</td>
+      <td>l</td>
+      <td>3.00</td>
+      <td>h</td>
+      <td>32.00</td>
+      <td>-116.00</td>
+      <td>6.0</td>
+      <td>D</td>
+      <td>3358388</td>
+      <td>7</td>
+      <td>0</td>
+      <td>1932</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1932-01-04</td>
+      <td>21:30:00.96</td>
+      <td>eq</td>
+      <td>l</td>
+      <td>2.00</td>
+      <td>h</td>
+      <td>33.77</td>
+      <td>-117.49</td>
+      <td>6.0</td>
+      <td>C</td>
+      <td>3358396</td>
+      <td>11</td>
+      <td>0</td>
+      <td>1932</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1932-01-05</td>
+      <td>02:37:27.96</td>
+      <td>eq</td>
+      <td>l</td>
+      <td>1.50</td>
+      <td>h</td>
+      <td>33.56</td>
+      <td>-118.44</td>
+      <td>6.0</td>
+      <td>C</td>
+      <td>3358398</td>
+      <td>8</td>
+      <td>0</td>
+      <td>1932</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>818704</th>
+      <td>2020-12-31</td>
+      <td>20:50:40.05</td>
+      <td>eq</td>
+      <td>l</td>
+      <td>0.33</td>
+      <td>l</td>
+      <td>33.67</td>
+      <td>-116.76</td>
+      <td>14.0</td>
+      <td>A</td>
+      <td>39508231</td>
+      <td>11</td>
+      <td>1933</td>
+      <td>2020</td>
+    </tr>
+    <tr>
+      <th>818705</th>
+      <td>2020-12-31</td>
+      <td>21:37:28.19</td>
+      <td>qb</td>
+      <td>l</td>
+      <td>1.23</td>
+      <td>l</td>
+      <td>32.59</td>
+      <td>-116.87</td>
+      <td>-0.3</td>
+      <td>C</td>
+      <td>39508247</td>
+      <td>38</td>
+      <td>2085</td>
+      <td>2020</td>
+    </tr>
+    <tr>
+      <th>818706</th>
+      <td>2020-12-31</td>
+      <td>22:15:56.72</td>
+      <td>eq</td>
+      <td>l</td>
+      <td>1.45</td>
+      <td>l</td>
+      <td>33.35</td>
+      <td>-116.42</td>
+      <td>13.4</td>
+      <td>A</td>
+      <td>39508263</td>
+      <td>69</td>
+      <td>2079</td>
+      <td>2020</td>
+    </tr>
+    <tr>
+      <th>818707</th>
+      <td>2020-12-31</td>
+      <td>22:21:28.12</td>
+      <td>eq</td>
+      <td>l</td>
+      <td>2.12</td>
+      <td>l</td>
+      <td>33.18</td>
+      <td>-115.60</td>
+      <td>3.9</td>
+      <td>A</td>
+      <td>39508279</td>
+      <td>70</td>
+      <td>2121</td>
+      <td>2020</td>
+    </tr>
+    <tr>
+      <th>818708</th>
+      <td>2020-12-31</td>
+      <td>23:04:53.02</td>
+      <td>eq</td>
+      <td>l</td>
+      <td>1.66</td>
+      <td>l</td>
+      <td>36.06</td>
+      <td>-117.38</td>
+      <td>2.7</td>
+      <td>A</td>
+      <td>39508287</td>
+      <td>50</td>
+      <td>1659</td>
+      <td>2020</td>
+    </tr>
+  </tbody>
+</table>
+<p>818709 rows × 14 columns</p>
+</div></div></div>
+</div>
+<p>Each row in this dataframe corresponds to an earthquake event that happened between 1/1/1932 and 12/31/2020. The meaning of the columns is explained <a class="reference external" href="https://service.scedc.caltech.edu/ftp/catalogs/SCEC_DC/README">here</a>.
+But for the purposes of this problem we will only need information from the following columns:</p>
+<ul class="simple">
+<li><p>Year: This is the year of the event.</p></li>
+<li><p>ET: This is the type of the event. There are various types of events. For example, the seismometers may pick more than earthquakes, e.g., explosions. We are only intersted in earthquake events which are labeled by <code class="docutils literal notranslate"><span class="pre">eq</span></code>.</p></li>
+<li><p>MAG: This is the magnitude of the event.</p></li>
+</ul>
+<p>Let’s play with the data set to gain some experience.
+First, let’s extract all data for a random year.
+Say, year 2019.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_2019</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2019</span><span class="p">]</span>
+<span class="n">df_2019</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Date</th>
+      <th>Hour</th>
+      <th>ET</th>
+      <th>GT</th>
+      <th>MAG</th>
+      <th>M</th>
+      <th>LAT</th>
+      <th>LON</th>
+      <th>DEPTH</th>
+      <th>Q</th>
+      <th>EVID</th>
+      <th>NPH</th>
+      <th>NGRM</th>
+      <th>Year</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>717665</th>
+      <td>2019-01-01</td>
+      <td>01:39:57.67</td>
+      <td>eq</td>
+      <td>l</td>
+      <td>0.83</td>
+      <td>l</td>
+      <td>33.506</td>
+      <td>-116.794</td>
+      <td>5.0</td>
+      <td>A</td>
+      <td>38412384</td>
+      <td>45</td>
+      <td>1154</td>
+      <td>2019</td>
+    </tr>
+    <tr>
+      <th>717666</th>
+      <td>2019-01-01</td>
+      <td>01:43:28.42</td>
+      <td>eq</td>
+      <td>l</td>
+      <td>0.47</td>
+      <td>l</td>
+      <td>33.484</td>
+      <td>-116.785</td>
+      <td>5.5</td>
+      <td>A</td>
+      <td>38412392</td>
+      <td>36</td>
+      <td>1309</td>
+      <td>2019</td>
+    </tr>
+    <tr>
+      <th>717667</th>
+      <td>2019-01-01</td>
+      <td>02:27:57.45</td>
+      <td>eq</td>
+      <td>l</td>
+      <td>0.98</td>
+      <td>l</td>
+      <td>33.505</td>
+      <td>-116.798</td>
+      <td>3.5</td>
+      <td>A</td>
+      <td>38412416</td>
+      <td>52</td>
+      <td>1410</td>
+      <td>2019</td>
+    </tr>
+    <tr>
+      <th>717668</th>
+      <td>2019-01-01</td>
+      <td>02:31:17.10</td>
+      <td>eq</td>
+      <td>l</td>
+      <td>0.61</td>
+      <td>l</td>
+      <td>33.511</td>
+      <td>-116.794</td>
+      <td>2.7</td>
+      <td>A</td>
+      <td>38412424</td>
+      <td>39</td>
+      <td>825</td>
+      <td>2019</td>
+    </tr>
+    <tr>
+      <th>717669</th>
+      <td>2019-01-01</td>
+      <td>02:38:38.38</td>
+      <td>eq</td>
+      <td>l</td>
+      <td>0.61</td>
+      <td>l</td>
+      <td>33.706</td>
+      <td>-116.808</td>
+      <td>15.3</td>
+      <td>A</td>
+      <td>38412432</td>
+      <td>27</td>
+      <td>1135</td>
+      <td>2019</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>781419</th>
+      <td>2019-12-31</td>
+      <td>22:47:36.78</td>
+      <td>eq</td>
+      <td>l</td>
+      <td>1.47</td>
+      <td>l</td>
+      <td>35.638</td>
+      <td>-117.460</td>
+      <td>6.9</td>
+      <td>A</td>
+      <td>39019127</td>
+      <td>34</td>
+      <td>1906</td>
+      <td>2019</td>
+    </tr>
+    <tr>
+      <th>781420</th>
+      <td>2019-12-31</td>
+      <td>22:52:18.08</td>
+      <td>eq</td>
+      <td>l</td>
+      <td>0.23</td>
+      <td>l</td>
+      <td>33.589</td>
+      <td>-116.805</td>
+      <td>5.5</td>
+      <td>A</td>
+      <td>39019135</td>
+      <td>38</td>
+      <td>1665</td>
+      <td>2019</td>
+    </tr>
+    <tr>
+      <th>781421</th>
+      <td>2019-12-31</td>
+      <td>23:05:39.85</td>
+      <td>eq</td>
+      <td>l</td>
+      <td>0.94</td>
+      <td>l</td>
+      <td>35.755</td>
+      <td>-117.559</td>
+      <td>6.7</td>
+      <td>A</td>
+      <td>39019143</td>
+      <td>19</td>
+      <td>691</td>
+      <td>2019</td>
+    </tr>
+    <tr>
+      <th>781422</th>
+      <td>2019-12-31</td>
+      <td>23:18:31.60</td>
+      <td>eq</td>
+      <td>l</td>
+      <td>0.74</td>
+      <td>l</td>
+      <td>35.721</td>
+      <td>-117.555</td>
+      <td>3.8</td>
+      <td>A</td>
+      <td>39019151</td>
+      <td>38</td>
+      <td>476</td>
+      <td>2019</td>
+    </tr>
+    <tr>
+      <th>781423</th>
+      <td>2019-12-31</td>
+      <td>23:28:38.45</td>
+      <td>eq</td>
+      <td>l</td>
+      <td>1.45</td>
+      <td>l</td>
+      <td>33.018</td>
+      <td>-116.000</td>
+      <td>1.1</td>
+      <td>A</td>
+      <td>39019159</td>
+      <td>41</td>
+      <td>1790</td>
+      <td>2019</td>
+    </tr>
+  </tbody>
+</table>
+<p>63759 rows × 14 columns</p>
+</div></div></div>
+</div>
+<p>Out of these, we only care about earthquake events.
+So, let’s filter out everything else:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_2019_eq</span> <span class="o">=</span> <span class="n">df_2019</span><span class="p">[</span><span class="n">df_2019</span><span class="p">[</span><span class="s1">&#39;ET&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;eq&#39;</span><span class="p">]</span>
+<span class="n">df_2019_eq</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Date</th>
+      <th>Hour</th>
+      <th>ET</th>
+      <th>GT</th>
+      <th>MAG</th>
+      <th>M</th>
+      <th>LAT</th>
+      <th>LON</th>
+      <th>DEPTH</th>
+      <th>Q</th>
+      <th>EVID</th>
+      <th>NPH</th>
+      <th>NGRM</th>
+      <th>Year</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>717665</th>
+      <td>2019-01-01</td>
+      <td>01:39:57.67</td>
+      <td>eq</td>
+      <td>l</td>
+      <td>0.83</td>
+      <td>l</td>
+      <td>33.506</td>
+      <td>-116.794</td>
+      <td>5.0</td>
+      <td>A</td>
+      <td>38412384</td>
+      <td>45</td>
+      <td>1154</td>
+      <td>2019</td>
+    </tr>
+    <tr>
+      <th>717666</th>
+      <td>2019-01-01</td>
+      <td>01:43:28.42</td>
+      <td>eq</td>
+      <td>l</td>
+      <td>0.47</td>
+      <td>l</td>
+      <td>33.484</td>
+      <td>-116.785</td>
+      <td>5.5</td>
+      <td>A</td>
+      <td>38412392</td>
+      <td>36</td>
+      <td>1309</td>
+      <td>2019</td>
+    </tr>
+    <tr>
+      <th>717667</th>
+      <td>2019-01-01</td>
+      <td>02:27:57.45</td>
+      <td>eq</td>
+      <td>l</td>
+      <td>0.98</td>
+      <td>l</td>
+      <td>33.505</td>
+      <td>-116.798</td>
+      <td>3.5</td>
+      <td>A</td>
+      <td>38412416</td>
+      <td>52</td>
+      <td>1410</td>
+      <td>2019</td>
+    </tr>
+    <tr>
+      <th>717668</th>
+      <td>2019-01-01</td>
+      <td>02:31:17.10</td>
+      <td>eq</td>
+      <td>l</td>
+      <td>0.61</td>
+      <td>l</td>
+      <td>33.511</td>
+      <td>-116.794</td>
+      <td>2.7</td>
+      <td>A</td>
+      <td>38412424</td>
+      <td>39</td>
+      <td>825</td>
+      <td>2019</td>
+    </tr>
+    <tr>
+      <th>717669</th>
+      <td>2019-01-01</td>
+      <td>02:38:38.38</td>
+      <td>eq</td>
+      <td>l</td>
+      <td>0.61</td>
+      <td>l</td>
+      <td>33.706</td>
+      <td>-116.808</td>
+      <td>15.3</td>
+      <td>A</td>
+      <td>38412432</td>
+      <td>27</td>
+      <td>1135</td>
+      <td>2019</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>781419</th>
+      <td>2019-12-31</td>
+      <td>22:47:36.78</td>
+      <td>eq</td>
+      <td>l</td>
+      <td>1.47</td>
+      <td>l</td>
+      <td>35.638</td>
+      <td>-117.460</td>
+      <td>6.9</td>
+      <td>A</td>
+      <td>39019127</td>
+      <td>34</td>
+      <td>1906</td>
+      <td>2019</td>
+    </tr>
+    <tr>
+      <th>781420</th>
+      <td>2019-12-31</td>
+      <td>22:52:18.08</td>
+      <td>eq</td>
+      <td>l</td>
+      <td>0.23</td>
+      <td>l</td>
+      <td>33.589</td>
+      <td>-116.805</td>
+      <td>5.5</td>
+      <td>A</td>
+      <td>39019135</td>
+      <td>38</td>
+      <td>1665</td>
+      <td>2019</td>
+    </tr>
+    <tr>
+      <th>781421</th>
+      <td>2019-12-31</td>
+      <td>23:05:39.85</td>
+      <td>eq</td>
+      <td>l</td>
+      <td>0.94</td>
+      <td>l</td>
+      <td>35.755</td>
+      <td>-117.559</td>
+      <td>6.7</td>
+      <td>A</td>
+      <td>39019143</td>
+      <td>19</td>
+      <td>691</td>
+      <td>2019</td>
+    </tr>
+    <tr>
+      <th>781422</th>
+      <td>2019-12-31</td>
+      <td>23:18:31.60</td>
+      <td>eq</td>
+      <td>l</td>
+      <td>0.74</td>
+      <td>l</td>
+      <td>35.721</td>
+      <td>-117.555</td>
+      <td>3.8</td>
+      <td>A</td>
+      <td>39019151</td>
+      <td>38</td>
+      <td>476</td>
+      <td>2019</td>
+    </tr>
+    <tr>
+      <th>781423</th>
+      <td>2019-12-31</td>
+      <td>23:28:38.45</td>
+      <td>eq</td>
+      <td>l</td>
+      <td>1.45</td>
+      <td>l</td>
+      <td>33.018</td>
+      <td>-116.000</td>
+      <td>1.1</td>
+      <td>A</td>
+      <td>39019159</td>
+      <td>41</td>
+      <td>1790</td>
+      <td>2019</td>
+    </tr>
+  </tbody>
+</table>
+<p>63108 rows × 14 columns</p>
+</div></div></div>
+</div>
+<p>Now, let’s see if there was at least one major earthquake during 2019:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">test_mag</span> <span class="o">=</span> <span class="n">df_2019_eq</span><span class="p">[</span><span class="s1">&#39;MAG&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">6</span>
+<span class="n">test_mag</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>717665    False
+717666    False
+717667    False
+717668    False
+717669    False
+          ...  
+781419    False
+781420    False
+781421    False
+781422    False
+781423    False
+Name: MAG, Length: 63108, dtype: bool
+</pre></div>
+</div>
+</div>
+</div>
+<p>Is there at least one True value in this array?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">test_mag</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MAG
+False    63106
+True         2
+Name: count, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>There are exactly 2 major earthquakes.
+You can extract the number like this:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">test_mag</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()[</span><span class="kc">True</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2
+</pre></div>
+</div>
+</div>
+</div>
+<p>So, to test whether or not there was a major earthquake you need to do:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kc">True</span> <span class="ow">in</span> <span class="n">test_mag</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Now, we will use bootstrapping to estimate the probability of a major earthquake during a randomly picked year.
+Follow the instructions below completing the code where necessary.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">estimate_probability_of_major_earthquake_during_year</span><span class="p">(</span><span class="n">num_years</span><span class="p">,</span> <span class="n">df</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Estimate the probability of major earthquake in a random year.</span>
+<span class="sd">    </span>
+<span class="sd">    Arguments:</span>
+<span class="sd">    num_years    -    The number of years to pick at random.</span>
+<span class="sd">    df           -    The dataframe containing all the observed events.</span>
+<span class="sd">    </span>
+<span class="sd">    Returns: The number of years in which we had at least one major earthquake divided by the num_years.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">num_major_eqs</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_years</span><span class="p">):</span>
+        <span class="c1"># Pick a year at random between 1932 and 2020</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1932</span><span class="p">,</span> <span class="mi">2021</span><span class="p">)</span>
+        <span class="c1"># Extract all the events that happened in that year</span>
+        <span class="n">df_y</span> <span class="o">=</span> <span class="c1"># YOUR CODE HERE</span>
+        <span class="c1"># Find all earthquake events</span>
+        <span class="n">df_y_eq</span> <span class="o">=</span> <span class="c1"># YOUR CODE HERE</span>
+        <span class="c1"># Test if there is at least one major earthquake in this year</span>
+        <span class="n">test_mag</span> <span class="o">=</span> <span class="c1"># YOUR CODE HERE</span>
+        <span class="n">test_mag_counts</span> <span class="o">=</span> <span class="n">test_mag</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+        <span class="c1"># Test if there is at least one major event in this year</span>
+        <span class="c1"># and increase num_major_eqs by one if yes</span>
+        <span class="k">if</span> <span class="kc">True</span> <span class="ow">in</span> <span class="n">test_mag</span><span class="o">.</span><span class="n">value_counts</span><span class="p">():</span>
+            <span class="n">num_major_eqs</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">num_major_eqs</span> <span class="o">/</span> <span class="n">num_years</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Use the following lines to test your code.
+We run it 10 times. Notice that everytime you get a slighlty different estimate.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">p_major_eq</span> <span class="o">=</span> <span class="n">estimate_probability_of_major_earthquake_during_year</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="n">df</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;p_major_eq = </span><span class="si">{</span><span class="n">p_major_eq</span><span class="si">:</span><span class="s1">1.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Repeat the probability estimation above 200 times, store all estimates in a list, and do a histogram of the estimates. Hint: Replicate what we did at the very end of <a class="reference internal" href="estimating-probabilities-from-data.html#lecture07-estimating-probabilities-from-data"><span class="std std-ref">Estimating probabilities from data - Bootstrapping</span></a>.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># A place to store the estimates</span>
+<span class="n">p_major_eqs</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="c1"># Put 1000 estimates in there</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">200</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    <span class="n">p_major_eq</span> <span class="o">=</span> <span class="c1"># your code here</span>
+    <span class="n">p_major_eqs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">p_major_eq</span><span class="p">)</span>
+<span class="c1"># And now do the histogram</span>
+<span class="c1"># Your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Run the following code to convert the notebook to a pdf. Verify that the file path to the notebook is correct.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">google.colab</span><span class="w"> </span><span class="kn">import</span> <span class="n">drive</span>
+<span class="n">drive</span><span class="o">.</span><span class="n">mount</span><span class="p">(</span><span class="s1">&#39;/content/drive&#39;</span><span class="p">)</span>
+<span class="o">!</span>apt-get<span class="w"> </span>install<span class="w"> </span>inkscape<span class="w"> </span>texlive<span class="w"> </span>texlive-xetex<span class="w"> </span>texlive-latex-extra<span class="w"> </span>pandoc<span class="w"> </span>--quiet
+<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>pypandoc<span class="w"> </span>--quiet
+<span class="o">!</span>jupyter<span class="w"> </span>nbconvert<span class="w"> </span>--to<span class="w"> </span>PDF<span class="w"> </span><span class="s1">&#39;/content/drive/MyDrive/Colab Notebooks/Copy of homework_07.ipynb&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./lecture07"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="estimating-probabilities-from-data.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Estimating probabilities from data - Bootstrapping</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../lecture08/intro.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Lecture 8: The basic rules of probability</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#student-details">Student details</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-1-blackjack-probabilities">Problem 1 - Blackjack probabilities</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-finding-the-probability-of-a-using-the-principle-of-inssuficient-reason">2.A - Finding the probability of <span class="math notranslate nohighlight">\(A\)</span> using the principle of inssuficient reason</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-estimating-the-probability-of-a-by-simulation">2.B - Estimating the probability of A by simulation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-2-predicting-the-probability-of-major-earthquakes-in-southern-california">Problem 2 - Predicting the probability of major earthquakes in Southern California</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Ilias Bilionis (ibilion[at]purdue.edu)
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
